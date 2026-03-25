@@ -198,6 +198,15 @@
             font-size: 0.95rem;
         }
 
+        .failure-analysis-table thead th:nth-child(5),
+        .failure-analysis-table tbody tr td:nth-child(5),
+        .failure-analysis-table tbody tr td:nth-child(4) {
+            width: 20vw;
+            max-width: 20vw;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
         thead {
             background: #333333;
             border-bottom: 2px solid var(--border);
@@ -485,7 +494,7 @@
         </div>
         </main>
         <div class="table-container wide">
-            <table>
+            <table class="failure-analysis-table">
                 <thead>
                     <tr>
                         <th>Failure Category</th>
@@ -500,7 +509,7 @@
                     <tbody>
                         <tr>
                             <td rowspan="15"><strong>Network Fluctuation</strong></td>
-                            <td></td>
+                            <td>igniterealtime/Openfire</td>
                             <td>20077703205</td>
                             <td>Request Timeout</td>
                             <td>Error: The error indicates that the workflow failed due to a timeout while downloading the Artifact.<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -508,7 +517,7 @@
                             <td><img src="images/20077703205_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>IntellectualSites/PlotSquared</td>
                             <td>18246935468</td>
                             <td>Request Timeout</td>
                             <td>Error: connect ETIMEDOUT 104.17.128.37:443 indicates that the execution machine attempted to connect to Git<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -516,7 +525,7 @@
                             <td><img src="images/18246935468_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>SkriptLang/Skript</td>
                             <td>26918113411</td>
                             <td>Request Timeout</td>
                             <td>Error: Connect timed out indicates that the build tool (Gradle) attempted to fetch from an external Maven rep<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -524,7 +533,7 @@
                             <td><img src="images/26918113411_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>SkriptLang/Skript</td>
                             <td>26908758150</td>
                             <td>Request Timeout</td>
                             <td>Error: Connect timed out indicates that the build tool (Gradle) attempted to fetch from an external Maven rep<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -532,7 +541,7 @@
                             <td><img src="images/26908758150_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>jMonkeyEngine/jmonkeyengine</td>
                             <td>19905287914</td>
                             <td>Request Timeout</td>
                             <td>Error: The error indicates that the workflow failed due to a timeout while downloading the Artifact.<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -540,7 +549,7 @@
                             <td><img src="images/19905287914_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>jMonkeyEngine/jmonkeyengine</td>
                             <td>19930700187</td>
                             <td>Request Timeout</td>
                             <td>Error: The error indicates that the workflow failed due to a timeout while downloading the Artifact.<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -548,7 +557,7 @@
                             <td><img src="images/19930700187_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>StarRocks/starrocks</td>
                             <td>23877440817</td>
                             <td>Connection Reset</td>
                             <td>Error: ECONNRESET indicates that the Action attempted to upload the build artifact to Git<br>Root Cause: The upload operation was successfully executed after a rerun.</td>
@@ -556,7 +565,7 @@
                             <td><img src="images/23877440817_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>StarRocks/starrocks</td>
                             <td>24940507896</td>
                             <td>Connection Reset</td>
                             <td>Error: ECONNRESET indicates that the Action attempted to upload the build artifact to Git<br>Root Cause: The upload operation was successfully executed after a rerun.</td>
@@ -564,7 +573,7 @@
                             <td><img src="images/24940507896_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/tinkerpop</td>
                             <td>21529798021</td>
                             <td>Connection Reset</td>
                             <td>Error: connection reset by peer indicates that Docker attempted to connect to Docker Hub auth<br>Root Cause: The authentication operation was successfully executed after a rerun.</td>
@@ -572,7 +581,7 @@
                             <td><img src="images/21529798021_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/pinot</td>
                             <td>25647531041</td>
                             <td>Resource Download Interruption</td>
                             <td>Error: Premature end of Content-Length indicates that while downloading the Node.js installation package, the net<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -580,7 +589,7 @@
                             <td><img src="images/25647531041_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/pinot</td>
                             <td>26757406909</td>
                             <td>Resource Download Interruption</td>
                             <td>Error: Premature end of Content-Length indicates that while downloading the Node.js installation package, the net<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -588,7 +597,7 @@
                             <td><img src="images/26757406909_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/pinot</td>
                             <td>24818704176</td>
                             <td>Resource Download Interruption</td>
                             <td>Error: Premature end of Content-Length indicates that while downloading the Node.js installation package, the net<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -596,7 +605,7 @@
                             <td><img src="images/24818704176_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/maven</td>
                             <td>17168458533</td>
                             <td>TLS Handshake Failure</td>
                             <td>Error: Remote host terminated the handshake indicates that while downloading from the Maven central repository,<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -604,7 +613,7 @@
                             <td><img src="images/17168458533_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/maven</td>
                             <td>17000228151</td>
                             <td>TLS Handshake Failure</td>
                             <td>Error: Remote host terminated the handshake indicates that while downloading from the Maven central repository,<br>Root Cause: The download operation was successfully executed after a rerun.</td>
@@ -612,7 +621,7 @@
                             <td><img src="images/17000228151_1.png" class="table-img" onclick="openGallery(this)"></td>
                         </tr>
                         <tr>
-                            <td></td>
+                            <td>apache/iotdb</td>
                             <td>24938834029</td>
                             <td>Connection Refuse</td>
                             <td>Error: Connection refused indicates that the build machine attempted to connect to the Apache mirror repository (repo<br>Root Cause: The download operation was successfully executed after a rerun.</td>
