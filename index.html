@@ -198,11 +198,8 @@
             font-size: 0.95rem;
         }
 
-        .failure-analysis-table thead th:nth-child(5),
-        .failure-analysis-table tbody tr td:nth-child(5),
-        .failure-analysis-table tbody tr td:nth-child(4) {
-            width: 20vw;
-            max-width: 20vw;
+        .failure-analysis-table td,
+        .failure-analysis-table th {
             overflow-wrap: anywhere;
             word-break: break-word;
         }
@@ -495,6 +492,15 @@
         </main>
         <div class="table-container wide">
             <table class="failure-analysis-table">
+                <colgroup>
+                    <col style="width: 15vw; max-width: 15vw;">
+                    <col style="width: 10vw; max-width: 10vw;">
+                    <col style="width: 10vw; max-width: 10vw;">
+                    <col style="width: 10vw; max-width: 10vw;">
+                    <col style="width: 20vw; max-width: 20vw;">
+                    <col>
+                    <col>
+                </colgroup>
                 <thead>
                     <tr>
                         <th>Failure Category</th>
