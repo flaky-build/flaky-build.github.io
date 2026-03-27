@@ -284,6 +284,188 @@
             margin: 2rem 0;
         }
 
+        .ablation-note {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .ablation-chart-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .ablation-chart-card h3 {
+            margin-top: 0;
+        }
+
+        .ablation-chart-card p {
+            margin-bottom: 0;
+        }
+
+        .ablation-chart {
+            margin-top: 1.25rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ablation-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .ablation-legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .ablation-legend-swatch {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        .ablation-legend-swatch.struct {
+            background: #8c8c8c;
+        }
+
+        .ablation-legend-swatch.log {
+            background: #d1d1d1;
+        }
+
+        .ablation-legend-swatch.full {
+            background: #1a1a1a;
+        }
+
+        .ablation-bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 1.5rem;
+            min-height: 320px;
+            padding-top: 0.5rem;
+            overflow-x: auto;
+            margin: 0 auto;
+        }
+
+        .ablation-chart-group {
+            flex: 0 0 auto;
+            min-width: max-content;
+        }
+
+        .ablation-chart-bars {
+            display: grid;
+            grid-template-columns: repeat(var(--bar-count, 1), minmax(52px, 64px));
+            align-items: flex-end;
+            gap: 0.75rem;
+            min-height: 250px;
+            padding: 1rem 0.25rem 0;
+            border-bottom: 1px solid var(--border);
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 100% 25%;
+            justify-content: center;
+            width: auto;
+        }
+
+        .ablation-bar-col {
+            min-width: 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .ablation-bar-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .ablation-bar-track {
+            width: 100%;
+            height: 210px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .ablation-bar {
+            width: 100%;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            transition: transform 0.2s ease;
+        }
+
+        .ablation-bar:hover {
+            transform: translateY(-2px);
+        }
+
+        .ablation-bar.struct {
+            background: #8c8c8c;
+        }
+
+        .ablation-bar.log {
+            background: #d1d1d1;
+        }
+
+        .ablation-bar.full {
+            background: #1a1a1a;
+        }
+
+        .ablation-bar-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-primary);
+        }
+
+        .ablation-group-label {
+            margin-top: 0.8rem;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .ablation-summary-table td:first-child,
+        .ablation-project-table td:first-child {
+            color: var(--text-primary);
+        }
+
+        .ablation-project-table td,
+        .ablation-summary-table td {
+            font-size: 0.92rem;
+        }
+
+        .delta-positive {
+            color: #0f6b2f;
+            font-weight: 600;
+        }
+
+        .delta-negative {
+            color: #8d1f1f;
+            font-weight: 600;
+        }
+
+        .delta-neutral {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .na-text {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
         /* Footer */
         footer {
             background: var(--secondary-bg);
@@ -344,6 +526,28 @@
 
             th, td {
                 padding: 0.5rem 0.75rem;
+            }
+
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ablation-bar-chart {
+                gap: 0.75rem;
+            }
+
+            .ablation-chart-bars {
+                gap: 0.4rem;
+            }
+
+            .ablation-bar-col {
+                min-width: 34px;
+            }
+
+            .ablation-bar-label,
+            .ablation-group-label,
+            .ablation-bar-value {
+                font-size: 0.65rem;
             }
         }
 
@@ -2962,6 +3166,291 @@ It succeeded immediately after rerun.</td>
             </p>
         </section>
 
+        <section id="ablation">
+            <h2>Ablation Study</h2>
+            <p>
+                We compare three settings in the ablation study: <strong>structured-only</strong> using four classifiers
+                over structured features, <strong>log-only</strong> using the standalone log model, and the
+                <strong>full method</strong> that combines structured features with log representations.
+                The first table summarizes average and median performance, while the second table compares the
+                best-F1 configuration under each setting on a per-project basis.
+            </p>
+
+            <div class="table-container" style="overflow-x: auto;">
+                <table class="ablation-summary-table" style="min-width: 1280px;">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Setting</th>
+                            <th rowspan="2">Model</th>
+                            <th colspan="4" style="text-align: center; border-left: 2px solid rgba(255,255,255,0.3);">Average</th>
+                            <th colspan="4" style="text-align: center; border-left: 2px solid rgba(255,255,255,0.3);">Median</th>
+                        </tr>
+                        <tr>
+                            <th style="border-left: 2px solid rgba(255,255,255,0.3);">Prec.</th>
+                            <th>Rec.</th>
+                            <th>F1</th>
+                            <th>AUC</th>
+                            <th style="border-left: 2px solid rgba(255,255,255,0.3);">Prec.</th>
+                            <th>Rec.</th>
+                            <th>F1</th>
+                            <th>AUC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="4"><strong>Structured-only</strong></td>
+                            <td>XGB</td>
+                            <td style="border-left: 2px solid var(--border);">0.6178</td>
+                            <td>0.7471</td>
+                            <td>0.6066</td>
+                            <td>0.8091</td>
+                            <td style="border-left: 2px solid var(--border);">0.6067</td>
+                            <td>0.7995</td>
+                            <td>0.5681</td>
+                            <td>0.8271</td>
+                        </tr>
+                        <tr>
+                            <td>RF</td>
+                            <td style="border-left: 2px solid var(--border);">0.5762</td>
+                            <td>0.8213</td>
+                            <td>0.6365</td>
+                            <td>0.8110</td>
+                            <td style="border-left: 2px solid var(--border);">0.5278</td>
+                            <td>0.9053</td>
+                            <td>0.6008</td>
+                            <td>0.8459</td>
+                        </tr>
+                        <tr>
+                            <td>SVM</td>
+                            <td style="border-left: 2px solid var(--border);">0.4734</td>
+                            <td>0.7756</td>
+                            <td>0.5360</td>
+                            <td>0.5902</td>
+                            <td style="border-left: 2px solid var(--border);">0.4583</td>
+                            <td>0.7993</td>
+                            <td>0.5180</td>
+                            <td>0.5235</td>
+                        </tr>
+                        <tr>
+                            <td>MLP</td>
+                            <td style="border-left: 2px solid var(--border);">0.6167</td>
+                            <td>0.8189</td>
+                            <td>0.6588</td>
+                            <td>0.7987</td>
+                            <td style="border-left: 2px solid var(--border);">0.5978</td>
+                            <td>0.9266</td>
+                            <td>0.6689</td>
+                            <td>0.7637</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Log-only</strong></td>
+                            <td>Log Model</td>
+                            <td style="border-left: 2px solid var(--border);">0.6677</td>
+                            <td>0.8475</td>
+                            <td>0.7267</td>
+                            <td>0.7397</td>
+                            <td style="border-left: 2px solid var(--border);">0.5764</td>
+                            <td>0.9044</td>
+                            <td>0.6777</td>
+                            <td>0.7242</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4"><strong>Full (Structured + Log)</strong></td>
+                            <td>XGB</td>
+                            <td style="border-left: 2px solid var(--border);">0.6902</td>
+                            <td>0.8285</td>
+                            <td>0.7332</td>
+                            <td>0.7420</td>
+                            <td style="border-left: 2px solid var(--border);">0.6104</td>
+                            <td>0.8778</td>
+                            <td>0.7027</td>
+                            <td>0.7441</td>
+                        </tr>
+                        <tr>
+                            <td>RF</td>
+                            <td style="border-left: 2px solid var(--border);">0.7309</td>
+                            <td>0.9152</td>
+                            <td>0.7988</td>
+                            <td>0.8402</td>
+                            <td style="border-left: 2px solid var(--border);">0.7491</td>
+                            <td>0.9444</td>
+                            <td>0.8152</td>
+                            <td>0.8497</td>
+                        </tr>
+                        <tr>
+                            <td>SVM</td>
+                            <td style="border-left: 2px solid var(--border);">0.7336</td>
+                            <td>0.9143</td>
+                            <td>0.8026</td>
+                            <td>0.8264</td>
+                            <td style="border-left: 2px solid var(--border);">0.6917</td>
+                            <td>0.9519</td>
+                            <td>0.7693</td>
+                            <td>0.7980</td>
+                        </tr>
+                        <tr>
+                            <td>MLP</td>
+                            <td style="border-left: 2px solid var(--border);">0.7655</td>
+                            <td>0.8606</td>
+                            <td>0.7973</td>
+                            <td>0.8521</td>
+                            <td style="border-left: 2px solid var(--border);">0.8019</td>
+                            <td>0.8857</td>
+                            <td>0.8050</td>
+                            <td>0.8493</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-grid">
+                <div class="ablation-chart-card">
+                    <h3>Average F1 Across Settings</h3>
+                    <p>Each bar corresponds to one model configuration. Bars are grouped by setting.</p>
+                    <div id="ablation-f1-chart" class="ablation-chart"></div>
+                </div>
+            </div>
+
+            <div class="table-container" style="overflow-x: auto;">
+                <table class="ablation-project-table" style="min-width: 1360px;">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Project</th>
+                            <th colspan="3" style="text-align: center; border-left: 2px solid rgba(255,255,255,0.3);">Structured-only Best</th>
+                            <th colspan="2" style="text-align: center; border-left: 2px solid rgba(255,255,255,0.3);">Log-only</th>
+                            <th colspan="3" style="text-align: center; border-left: 2px solid rgba(255,255,255,0.3);">Full Best</th>
+                        </tr>
+                        <tr>
+                            <th style="border-left: 2px solid rgba(255,255,255,0.3);">Model</th>
+                            <th>F1</th>
+                            <th>AUC</th>
+                            <th style="border-left: 2px solid rgba(255,255,255,0.3);">F1</th>
+                            <th>AUC</th>
+                            <th style="border-left: 2px solid rgba(255,255,255,0.3);">Model</th>
+                            <th>F1</th>
+                            <th>AUC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>spring-cloud-huawei*</strong></td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.7692</td>
+                            <td>0.9783</td>
+                            <td style="border-left: 2px solid var(--border);">0.9667</td>
+                            <td>1.0000</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.9109</td>
+                            <td>0.9626</td>
+                        </tr>
+                        <tr>
+                            <td><strong>aklivity/zilla</strong></td>
+                            <td style="border-left: 2px solid var(--border);">XGB</td>
+                            <td>0.7433</td>
+                            <td>0.8422</td>
+                            <td style="border-left: 2px solid var(--border);">0.6809</td>
+                            <td>0.6714</td>
+                            <td style="border-left: 2px solid var(--border);">RF</td>
+                            <td>0.8246</td>
+                            <td>0.8582</td>
+                        </tr>
+                        <tr>
+                            <td><strong>openhab-addons*</strong></td>
+                            <td style="border-left: 2px solid var(--border);">XGB</td>
+                            <td>0.5620</td>
+                            <td>0.8493</td>
+                            <td style="border-left: 2px solid var(--border);">0.6804</td>
+                            <td>0.5074</td>
+                            <td style="border-left: 2px solid var(--border);">RF</td>
+                            <td>0.6557</td>
+                            <td>0.8410</td>
+                        </tr>
+                        <tr>
+                            <td><strong>eclipse/xtext</strong></td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.6879</td>
+                            <td>0.7435</td>
+                            <td style="border-left: 2px solid var(--border);">0.6081</td>
+                            <td>0.8058</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.7697</td>
+                            <td>0.7489</td>
+                        </tr>
+                        <tr>
+                            <td><strong>alibaba/druid</strong></td>
+                            <td style="border-left: 2px solid var(--border);">RF</td>
+                            <td>0.9333</td>
+                            <td>0.9514</td>
+                            <td style="border-left: 2px solid var(--border);">0.6750</td>
+                            <td>0.6504</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.9462</td>
+                            <td>0.9642</td>
+                        </tr>
+                        <tr>
+                            <td><strong>apache/accumulo</strong></td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.6210</td>
+                            <td>0.7838</td>
+                            <td style="border-left: 2px solid var(--border);">0.7497</td>
+                            <td>0.7083</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.9625</td>
+                            <td>0.9651</td>
+                        </tr>
+                        <tr>
+                            <td><strong>apache/tinkerpop</strong></td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.9989</td>
+                            <td>0.9937</td>
+                            <td style="border-left: 2px solid var(--border);" class="na-text">0.9651</td>
+                            <td class="na-text">0.9599</td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.9688</td>
+                            <td>0.9702</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ctripcorp/x-pipe</strong></td>
+                            <td style="border-left: 2px solid var(--border);">XGB</td>
+                            <td>0.3706</td>
+                            <td>0.6958</td>
+                            <td style="border-left: 2px solid var(--border);">0.6066</td>
+                            <td>0.5134</td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.6173</td>
+                            <td>0.6375</td>
+                        </tr>
+                        <tr>
+                            <td><strong>peergos/peergos</strong></td>
+                            <td style="border-left: 2px solid var(--border);">RF</td>
+                            <td>0.5800</td>
+                            <td>0.7215</td>
+                            <td style="border-left: 2px solid var(--border);">0.4847</td>
+                            <td>0.7401</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.6806</td>
+                            <td>0.6808</td>
+                        </tr>
+                        <tr>
+                            <td><strong>quickfix-j/quickfixj</strong></td>
+                            <td style="border-left: 2px solid var(--border);">MLP</td>
+                            <td>0.7247</td>
+                            <td>0.8772</td>
+                            <td style="border-left: 2px solid var(--border);">0.5496</td>
+                            <td>0.8405</td>
+                            <td style="border-left: 2px solid var(--border);">SVM</td>
+                            <td>0.8210</td>
+                            <td>0.7995</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="ablation-note">
+                Note: * Project shortened by omitting owner.
+            </p>
+        </section>
+
         <!-- Ablation Study Section -->
         <!--
         <section id="ablation">
@@ -3251,12 +3740,96 @@ It succeeded immediately after rerun.</td>
         });
     </script>
 
+    <script>
+        const ablationChartData = {
+            f1: [
+                { setting: 'Structured-only', model: 'XGB', value: 0.6066, tone: 'struct' },
+                { setting: 'Structured-only', model: 'RF', value: 0.6365, tone: 'struct' },
+                { setting: 'Structured-only', model: 'SVM', value: 0.5360, tone: 'struct' },
+                { setting: 'Structured-only', model: 'MLP', value: 0.6588, tone: 'struct' },
+                { setting: 'Log-only', model: 'Log', value: 0.7267, tone: 'log' },
+                { setting: 'Full', model: 'XGB', value: 0.7332, tone: 'full' },
+                { setting: 'Full', model: 'RF', value: 0.7988, tone: 'full' },
+                { setting: 'Full', model: 'SVM', value: 0.8026, tone: 'full' },
+                { setting: 'Full', model: 'MLP', value: 0.7973, tone: 'full' }
+            ]
+        };
+
+        function renderAblationChart(containerId, items) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+
+            const groups = ['Structured-only', 'Log-only', 'Full'];
+            const legend = document.createElement('div');
+            legend.className = 'ablation-legend';
+            legend.innerHTML = '<span class=\"ablation-legend-item\"><span class=\"ablation-legend-swatch struct\"></span>Structured-only</span>' +
+                '<span class=\"ablation-legend-item\"><span class=\"ablation-legend-swatch log\"></span>Log-only</span>' +
+                '<span class=\"ablation-legend-item\"><span class=\"ablation-legend-swatch full\"></span>Full</span>';
+
+            const chart = document.createElement('div');
+            chart.className = 'ablation-bar-chart';
+
+            groups.forEach((groupName) => {
+                const groupItems = items.filter((item) => item.setting === groupName);
+                const group = document.createElement('div');
+                group.className = 'ablation-chart-group';
+
+                const bars = document.createElement('div');
+                bars.className = 'ablation-chart-bars';
+                bars.style.setProperty('--bar-count', groupItems.length);
+
+                groupItems.forEach((item) => {
+                    const column = document.createElement('div');
+                    column.className = 'ablation-bar-col';
+
+                    const value = document.createElement('div');
+                    value.className = 'ablation-bar-value';
+                    value.textContent = item.value.toFixed(4);
+
+                    const track = document.createElement('div');
+                    track.className = 'ablation-bar-track';
+
+                    const bar = document.createElement('div');
+                    bar.className = 'ablation-bar ' + item.tone;
+                    bar.style.height = `${Math.max(item.value, 0.02) * 210}px`;
+                    bar.title = `${item.setting} / ${item.model}: ${item.value.toFixed(4)}`;
+
+                    const label = document.createElement('div');
+                    label.className = 'ablation-bar-label';
+                    label.textContent = item.model;
+
+                    track.appendChild(bar);
+                    column.appendChild(value);
+                    column.appendChild(track);
+                    column.appendChild(label);
+                    bars.appendChild(column);
+                });
+
+                const groupLabel = document.createElement('div');
+                groupLabel.className = 'ablation-group-label';
+                groupLabel.textContent = groupName;
+
+                group.appendChild(bars);
+                group.appendChild(groupLabel);
+                chart.appendChild(group);
+            });
+
+            container.appendChild(legend);
+            container.appendChild(chart);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAblationChart('ablation-f1-chart', ablationChartData.f1);
+        });
+    </script>
+
     </main>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
     <style> 
  /* 为带有 rowspan 的类别单元格（Failure Category）添加交互样式 */ 
- td[rowspan] { 
+ .failure-analysis-table tbody td[rowspan] { 
      cursor: pointer; /* 鼠标悬浮时变为小手 */ 
      transition: background-color 0.2s ease; 
      user-select: none; /* 防止频繁点击时选中文本 */ 
@@ -3265,12 +3838,12 @@ It succeeded immediately after rerun.</td>
  } 
 
  /* 鼠标悬浮时的背景色反馈 */ 
- td[rowspan]:hover { 
+ .failure-analysis-table tbody td[rowspan]:hover { 
      background-color: var(--secondary-bg, #f5f5f5); 
  } 
 
  /* 展开状态下的小箭头 */ 
- td[rowspan]::after { 
+ .failure-analysis-table tbody td[rowspan]::after { 
      content: "▼"; 
      position: absolute; 
      right: 8px; 
@@ -3282,7 +3855,7 @@ It succeeded immediately after rerun.</td>
  } 
 
  /* 折叠状态下的小箭头（旋转-90度变成向右指） */ 
- td[rowspan].collapsed-category::after { 
+ .failure-analysis-table tbody td[rowspan].collapsed-category::after { 
      transform: translateY(-50%) rotate(-90deg); 
  } 
 
@@ -3295,7 +3868,7 @@ It succeeded immediately after rerun.</td>
  <script> 
  document.addEventListener('DOMContentLoaded', function() { 
      // 找到所有带有 rowspan 属性的 <td> 元素（即所有 Failure Category 单元格） 
-     const categoryCells = document.querySelectorAll('td[rowspan]'); 
+      const categoryCells = document.querySelectorAll('.failure-analysis-table tbody td[rowspan]'); 
      
      // 先保存原始 rowspan 值
      categoryCells.forEach(cell => {
